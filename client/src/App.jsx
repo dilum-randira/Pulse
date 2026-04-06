@@ -2,8 +2,10 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import ProtectedRoute from './components/routing/ProtectedRoute';
 import { useAuth } from './context/AuthContext';
 import MainLayout from './layouts/MainLayout';
+import Chat from './pages/Chat';
 import Feed from './pages/Feed';
 import LoginPage from './pages/LoginPage';
+import Matches from './pages/Matches';
 import RegisterPage from './pages/RegisterPage';
 
 function HomeRedirect() {
@@ -26,6 +28,8 @@ function App() {
       <Route element={<ProtectedRoute />}>
         <Route element={<MainLayout />}>
           <Route path="/dashboard" element={<Feed />} />
+          <Route path="/matches" element={<Matches />} />
+          <Route path="/chat/:matchId" element={<Chat />} />
         </Route>
       </Route>
 

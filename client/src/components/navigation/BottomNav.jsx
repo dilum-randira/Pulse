@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 const navItems = [
   { to: '/dashboard', label: 'Feed', icon: Heart },
-  { to: '/dashboard?tab=messages', label: 'Messages', icon: MessageCircle },
-  { to: '/dashboard?tab=profile', label: 'Profile', icon: User },
+  { to: '/matches', label: 'Messages', icon: MessageCircle },
+  { to: '/matches', label: 'Profile', icon: User },
 ];
 
 function BottomNav() {

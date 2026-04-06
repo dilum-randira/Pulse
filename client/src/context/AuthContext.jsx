@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axiosConfig';
+import { connectSocket, disconnectSocket, getSocket } from '../api/socket';
 
 const AuthContext = createContext(null);
 
@@ -29,6 +30,22 @@ export function AuthProvider({ children }) {
 
     setIsLoading(false);
   }, []);
+
+  useEffect(() => {
+    if (!token || !user?._id) {
+      return undefined;
+    }
+
+    const socket = connectSocket(token);
+    socket?.emit('setup', { _id: user._id });
+
+    return () => {
+      const activeSocket = getSocket();
+      if (activeSocket && !localStorage.getItem(TOKEN_STORAGE_KEY)) {
+        disconnectSocket();
+      }
+    };
+  }, [token, user]);
 
   const login = async (email, password) => {
     const response = await api.post('/auth/login', { email, password });
@@ -59,6 +76,7 @@ export function AuthProvider({ children }) {
     setUser(null);
     localStorage.removeItem(TOKEN_STORAGE_KEY);
     localStorage.removeItem(USER_STORAGE_KEY);
+    disconnectSocket();
     navigate('/login');
   };
 

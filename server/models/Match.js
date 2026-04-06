@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 
 const matchSchema = new mongoose.Schema(
   {
+    pairKey: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+    },
     participants: [
       {
         type: mongoose.Schema.Types.ObjectId,

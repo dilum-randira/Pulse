@@ -101,14 +101,15 @@ const swipe = async (req, res) => {
 
       if (isMatch) {
         const participants = [String(req.user._id), String(targetUserId)].sort();
+        const pairKey = participants.join(':');
         const existingMatch = await Match.findOne({
-          participants: { $all: participants, $size: 2 },
+          pairKey,
         });
 
         if (existingMatch) {
           matchedConversationId = existingMatch._id;
         } else {
-          const createdMatch = await Match.create({ participants });
+          const createdMatch = await Match.create({ participants, pairKey });
           matchedConversationId = createdMatch._id;
         }
       }
