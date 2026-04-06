@@ -6,15 +6,25 @@ const createToken = (userId) => {
   return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '7d' });
 };
 
-const register = async (req, res) => {
+const registerUser = async (req, res) => {
   try {
-    const { name, email, password, bio, gender, interestedIn, location } = req.body;
+    const {
+      name,
+      email,
+      password,
+      bio,
+      gender,
+      interestedIn,
+      images,
+      location,
+    } = req.body;
 
     if (!name || !email || !password) {
       return res.status(400).json({ message: 'Name, email, and password are required.' });
     }
 
-    const existingUser = await User.findOne({ email });
+    const normalizedEmail = email.toLowerCase();
+    const existingUser = await User.findOne({ email: normalizedEmail });
     if (existingUser) {
       return res.status(400).json({ message: 'User already exists.' });
     }
@@ -23,11 +33,12 @@ const register = async (req, res) => {
 
     const user = await User.create({
       name,
-      email,
+      email: normalizedEmail,
       password: hashedPassword,
       bio,
       gender,
       interestedIn,
+      images,
       location,
     });
 
@@ -38,6 +49,7 @@ const register = async (req, res) => {
       bio: user.bio,
       gender: user.gender,
       interestedIn: user.interestedIn,
+      images: user.images,
       location: user.location,
       token: createToken(user._id),
     });
@@ -46,7 +58,7 @@ const register = async (req, res) => {
   }
 };
 
-const login = async (req, res) => {
+const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -54,7 +66,7 @@ const login = async (req, res) => {
       return res.status(400).json({ message: 'Email and password are required.' });
     }
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: email.toLowerCase() });
     if (!user) {
       return res.status(401).json({ message: 'Invalid credentials.' });
     }
@@ -71,6 +83,7 @@ const login = async (req, res) => {
       bio: user.bio,
       gender: user.gender,
       interestedIn: user.interestedIn,
+      images: user.images,
       location: user.location,
       token: createToken(user._id),
     });
@@ -80,6 +93,6 @@ const login = async (req, res) => {
 };
 
 module.exports = {
-  register,
-  login,
+  registerUser,
+  loginUser,
 };

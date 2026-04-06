@@ -34,15 +34,21 @@ const userSchema = new mongoose.Schema(
       default: '',
       trim: true,
     },
+    images: {
+      type: [String],
+      default: [],
+    },
     location: {
       type: {
         type: String,
         enum: ['Point'],
         default: 'Point',
+        required: true,
       },
       coordinates: {
         type: [Number],
         default: [0, 0],
+        required: true,
       },
       address: {
         type: String,
