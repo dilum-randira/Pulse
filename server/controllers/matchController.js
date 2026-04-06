@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Interaction = require('../models/Interaction');
+const Match = require('../models/Match');
 const User = require('../models/User');
 
 const getFeed = async (req, res) => {
@@ -87,6 +88,8 @@ const swipe = async (req, res) => {
     );
 
     let isMatch = false;
+    let matchedConversationId = null;
+
     if (action === 'like') {
       const reciprocalLike = await Interaction.findOne({
         user: targetUserId,
@@ -95,9 +98,58 @@ const swipe = async (req, res) => {
       });
 
       isMatch = Boolean(reciprocalLike);
+
+      if (isMatch) {
+        const participants = [String(req.user._id), String(targetUserId)].sort();
+        const existingMatch = await Match.findOne({
+          participants: { $all: participants, $size: 2 },
+        });
+
+        if (existingMatch) {
+          matchedConversationId = existingMatch._id;
+        } else {
+          const createdMatch = await Match.create({ participants });
+          matchedConversationId = createdMatch._id;
+        }
+      }
     }
 
-    return res.json({ success: true, match: isMatch });
+    return res.json({ success: true, match: isMatch, matchId: matchedConversationId });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+const getMatches = async (req, res) => {
+  try {
+    const currentUserId = String(req.user._id);
+
+    const matches = await Match.find({ participants: req.user._id })
+      .populate('participants', 'name images bio')
+      .sort({ lastMessageAt: -1, createdAt: -1 });
+
+    const response = matches.map((match) => {
+      const otherUser = match.participants.find(
+        (participant) => String(participant._id) !== currentUserId
+      );
+
+      return {
+        _id: match._id,
+        user: otherUser
+          ? {
+              _id: otherUser._id,
+              name: otherUser.name,
+              images: otherUser.images,
+              bio: otherUser.bio,
+            }
+          : null,
+        lastMessage: match.lastMessage,
+        lastMessageAt: match.lastMessageAt,
+        createdAt: match.createdAt,
+      };
+    });
+
+    return res.json(response.filter((item) => item.user));
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -105,5 +157,6 @@ const swipe = async (req, res) => {
 
 module.exports = {
   getFeed,
+  getMatches,
   swipe,
 };
