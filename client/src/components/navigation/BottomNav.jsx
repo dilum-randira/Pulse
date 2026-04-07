@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const navItems = [
   { to: '/dashboard', label: 'Feed', icon: Heart },
   { to: '/matches', label: 'Messages', icon: MessageCircle },
-  { to: '/matches', label: 'Profile', icon: User },
+  { to: '/profile', label: 'Profile', icon: User },
 ];
 
 function BottomNav() {

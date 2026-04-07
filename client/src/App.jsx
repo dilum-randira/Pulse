@@ -7,6 +7,7 @@ import Feed from './pages/Feed';
 import LoginPage from './pages/LoginPage';
 import Matches from './pages/Matches';
 import RegisterPage from './pages/RegisterPage';
+import Profile from './pages/Profile';
 
 function HomeRedirect() {
   const { token, isLoading } = useAuth();
@@ -29,6 +30,7 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/dashboard" element={<Feed />} />
           <Route path="/matches" element={<Matches />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/chat/:matchId" element={<Chat />} />
         </Route>
       </Route>
