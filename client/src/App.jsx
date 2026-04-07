@@ -4,9 +4,9 @@ import { useAuth } from './context/AuthContext';
 import MainLayout from './layouts/MainLayout';
 import Chat from './pages/Chat';
 import Feed from './pages/Feed';
-import LoginPage from './pages/LoginPage';
+import Login from './pages/Login';
 import Matches from './pages/Matches';
-import RegisterPage from './pages/RegisterPage';
+import Register from './pages/Register';
 import Profile from './pages/Profile';
 
 function HomeRedirect() {
@@ -23,8 +23,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomeRedirect />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
       <Route element={<ProtectedRoute />}>
         <Route element={<MainLayout />}>
