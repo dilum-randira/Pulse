@@ -1,141 +1,165 @@
 <svg width="800" height="1200" viewBox="0 0 800 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#020617"/>
-      <stop offset="0.5" stop-color="#0f172a"/>
-      <stop offset="1" stop-color="#111827"/>
+    <linearGradient id="sky" x1="400" y1="0" x2="400" y2="1200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#24053f"/>
+      <stop offset="0.42" stop-color="#1f2fa6"/>
+      <stop offset="1" stop-color="#0b2a6f"/>
     </linearGradient>
-    <radialGradient id="moon" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(400 210) rotate(90) scale(90)">
-      <stop stop-color="#e5e7eb"/>
-      <stop offset="1" stop-color="#9ca3af"/>
+    <radialGradient id="moonGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(400 315) rotate(90) scale(140 140)">
+      <stop offset="0" stop-color="#dff3ff"/>
+      <stop offset="1" stop-color="#b8d7ff"/>
     </radialGradient>
-    <linearGradient id="tablecloth" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#fee2e2"/>
-      <stop offset="1" stop-color="#fecaca"/>
+    <linearGradient id="tableCloth" x1="220" y1="520" x2="600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffd4ea"/>
+      <stop offset="0.58" stop-color="#f7c6df"/>
+      <stop offset="1" stop-color="#ffd6e7"/>
     </linearGradient>
-    <linearGradient id="primaryDress" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f43f5e"/>
-      <stop offset="1" stop-color="#be123c"/>
+    <linearGradient id="dress" x1="520" y1="600" x2="650" y2="760" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8c1740"/>
+      <stop offset="1" stop-color="#d91f5a"/>
     </linearGradient>
+    <linearGradient id="shirt" x1="150" y1="540" x2="330" y2="760" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7fa7ff"/>
+      <stop offset="1" stop-color="#2d4c9d"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="720" x2="0" y2="1200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2d0f58"/>
+      <stop offset="1" stop-color="#5c123f"/>
+    </linearGradient>
+    <filter id="softGlow" x="-100" y="-100" width="1000" height="1400" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0.2 0 1 0 0 0.1 0 0 1 0 0.4 0 0 0 0.55 0"/>
+    </filter>
   </defs>
-  <rect width="800" height="1200" fill="url(#bg)"/>
+
+  <rect width="800" height="1200" fill="url(#sky)"/>
 
   <!-- stars -->
-  <g fill="#e5e7eb" fill-opacity="0.9">
-    <circle cx="120" cy="120" r="2"/>
-    <circle cx="220" cy="80" r="1.8"/>
-    <circle cx="320" cy="150" r="1.5"/>
-    <circle cx="520" cy="90" r="2.1"/>
-    <circle cx="640" cy="140" r="1.7"/>
-    <circle cx="700" cy="60" r="1.4"/>
-    <circle cx="80" cy="210" r="1.6"/>
-    <circle cx="260" cy="230" r="1.2"/>
-    <circle cx="560" cy="220" r="1.3"/>
+  <g fill="#fff7cc" opacity="0.95">
+    <circle cx="35" cy="110" r="3"/>
+    <circle cx="90" cy="205" r="2"/>
+    <circle cx="125" cy="78" r="1.6"/>
+    <circle cx="174" cy="164" r="1.9"/>
+    <circle cx="220" cy="136" r="2.2"/>
+    <circle cx="275" cy="92" r="1.8"/>
+    <circle cx="340" cy="184" r="2.3"/>
+    <circle cx="405" cy="122" r="1.7"/>
+    <circle cx="468" cy="192" r="2.1"/>
+    <circle cx="530" cy="88" r="1.6"/>
+    <circle cx="585" cy="165" r="2.1"/>
+    <circle cx="655" cy="111" r="1.8"/>
+    <circle cx="730" cy="196" r="2.2"/>
+    <circle cx="690" cy="72" r="1.5"/>
   </g>
 
   <!-- moon -->
-  <circle cx="400" cy="210" r="80" fill="url(#moon)"/>
-  <circle cx="430" cy="200" r="10" fill="#d4d4d8"/>
-  <circle cx="370" cy="230" r="14" fill="#d4d4d8"/>
-  <circle cx="390" cy="190" r="7" fill="#d4d4d8"/>
+  <g filter="url(#softGlow)">
+    <circle cx="400" cy="320" r="92" fill="url(#moonGlow)"/>
+    <circle cx="364" cy="305" r="9" fill="#c8e2ff"/>
+    <circle cx="430" cy="290" r="13" fill="#c8e2ff"/>
+    <circle cx="385" cy="350" r="16" fill="#c8e2ff"/>
+    <circle cx="444" cy="348" r="8" fill="#c8e2ff"/>
+  </g>
 
   <!-- string lights -->
-  <path d="M40 110 C 200 40 600 40 760 110" stroke="#fecaca" stroke-width="4" stroke-linecap="round"/>
-  <g fill="#fed7aa">
-    <circle cx="130" cy="95" r="10"/>
-    <circle cx="260" cy="75" r="10"/>
-    <circle cx="400" cy="65" r="10"/>
-    <circle cx="540" cy="75" r="10"/>
-    <circle cx="670" cy="95" r="10"/>
+  <path d="M40 86 C 210 20 590 20 760 86" stroke="#b56cff" stroke-opacity="0.35" stroke-width="5" stroke-linecap="round"/>
+  <g filter="url(#softGlow)">
+    <circle cx="580" cy="52" r="16" fill="#ffbc78"/>
+    <circle cx="655" cy="46" r="15" fill="#ff8fa3"/>
+    <circle cx="728" cy="64" r="16" fill="#f5a9ff"/>
   </g>
 
-  <!-- distant buildings -->
-  <g fill="#020617" fill-opacity="0.7">
-    <rect x="0" y="320" width="180" height="120" rx="8"/>
-    <rect x="160" y="300" width="160" height="140" rx="8"/>
-    <rect x="340" y="310" width="140" height="130" rx="8"/>
-    <rect x="500" y="295" width="180" height="145" rx="8"/>
+  <!-- distant skyline -->
+  <g fill="#13286b" opacity="0.85">
+    <rect x="0" y="350" width="110" height="190" rx="10"/>
+    <rect x="95" y="305" width="150" height="235" rx="10"/>
+    <rect x="215" y="330" width="135" height="210" rx="10"/>
+    <rect x="325" y="290" width="110" height="250" rx="10"/>
+    <rect x="430" y="320" width="145" height="220" rx="10"/>
+    <rect x="558" y="296" width="110" height="244" rx="10"/>
+    <rect x="650" y="340" width="150" height="200" rx="10"/>
   </g>
 
-  <!-- terrace floor -->
-  <rect x="0" y="640" width="800" height="560" fill="#111827"/>
-  <rect x="0" y="640" width="800" height="6" fill="#1f2937"/>
+  <!-- terrace glow line -->
+  <rect x="0" y="548" width="800" height="16" fill="#ffb6d5" opacity="0.15"/>
 
-  <!-- table and cloth -->
-  <rect x="200" y="520" width="400" height="260" rx="32" fill="url(#tablecloth)"/>
-  <rect x="200" y="730" width="400" height="20" fill="#fecaca"/>
+  <!-- table shadow -->
+  <ellipse cx="400" cy="925" rx="285" ry="58" fill="#5c123f" opacity="0.35"/>
 
-  <!-- table base -->
-  <rect x="380" y="750" width="40" height="160" rx="12" fill="#7f1d1d"/>
-  <rect x="340" y="900" width="120" height="26" rx="12" fill="#7f1d1d"/>
+  <!-- table -->
+  <rect x="190" y="520" width="420" height="270" rx="30" fill="url(#tableCloth)"/>
+  <path d="M190 715 C 265 744 535 744 610 715" stroke="#ffbad6" stroke-width="18" stroke-linecap="round"/>
+  <path d="M190 760 C 260 782 540 782 610 760" stroke="#d81b60" stroke-width="10" stroke-linecap="round" opacity="0.5"/>
 
-  <!-- candles on table -->
+  <!-- table legs -->
+  <rect x="382" y="748" width="36" height="170" rx="12" fill="#7c1d31"/>
+  <rect x="338" y="902" width="124" height="24" rx="12" fill="#7c1d31"/>
+
+  <!-- candles and flowers -->
   <g>
-    <rect x="310" y="520" width="10" height="60" rx="4" fill="#fde68a"/>
-    <circle cx="315" cy="510" r="10" fill="#fef9c3"/>
-    <rect x="385" y="520" width="10" height="60" rx="4" fill="#fde68a"/>
-    <circle cx="390" cy="510" r="10" fill="#fef9c3"/>
-    <rect x="465" y="520" width="10" height="60" rx="4" fill="#fde68a"/>
-    <circle cx="470" cy="510" r="10" fill="#fef9c3"/>
+    <rect x="312" y="528" width="10" height="58" rx="4" fill="#fef08a"/>
+    <circle cx="317" cy="518" r="10" fill="#fff7cc"/>
+    <rect x="478" y="528" width="10" height="58" rx="4" fill="#fef08a"/>
+    <circle cx="483" cy="518" r="10" fill="#fff7cc"/>
+    <rect x="398" y="572" width="24" height="48" rx="12" fill="#f3f4f6"/>
+    <path d="M410 572 C 406 550 402 540 394 530" stroke="#4ade80" stroke-width="4" stroke-linecap="round"/>
+    <path d="M412 570 C 416 548 422 540 428 532" stroke="#4ade80" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="392" cy="530" r="12" fill="#ff4d79"/>
+    <circle cx="421" cy="536" r="8" fill="#a855f7"/>
+    <circle cx="380" cy="545" r="6" fill="#fb7185"/>
   </g>
 
-  <!-- vase and rose -->
+  <!-- left person -->
   <g>
-    <rect x="386" y="570" width="28" height="40" rx="14" fill="#e5e7eb"/>
-    <path d="M400 570 C 395 550 392 540 386 530" stroke="#16a34a" stroke-width="4" stroke-linecap="round"/>
-    <circle cx="380" cy="525" r="10" fill="#be123c"/>
+    <rect x="170" y="642" width="74" height="186" rx="34" fill="#243b8f"/>
+    <rect x="230" y="642" width="80" height="186" rx="34" fill="#1a244f"/>
+    <rect x="152" y="814" width="96" height="28" rx="12" fill="#1a244f"/>
+    <rect x="228" y="814" width="102" height="28" rx="12" fill="#101423"/>
+    <ellipse cx="241" cy="589" rx="42" ry="40" fill="#ffd4b8"/>
+    <path d="M202 579 C 206 542 230 520 260 526 C 285 531 303 553 302 583 C 300 609 282 624 258 628" stroke="#7c2d12" stroke-width="32" stroke-linecap="round"/>
+    <path d="M188 574 C 195 551 218 540 248 542" stroke="#7c2d12" stroke-width="18" stroke-linecap="round"/>
+    <rect x="214" y="628" width="112" height="134" rx="42" fill="url(#shirt)"/>
+    <rect x="244" y="626" width="75" height="120" rx="36" fill="#20356c"/>
+    <rect x="312" y="633" width="126" height="28" rx="14" fill="#7fa7ff"/>
+    <circle cx="423" cy="646" r="14" fill="#ffd4b8"/>
+    <rect x="332" y="534" width="18" height="78" rx="8" fill="#d8e2ff"/>
+    <path d="M341 527 C 351 527 360 536 360 547 C 360 559 351 568 341 568 C 330 568 322 559 322 547 C 322 536 330 527 341 527Z" fill="#fff1b8"/>
   </g>
 
-  <!-- man on left -->
+  <!-- right person -->
   <g>
-    <!-- legs -->
-    <rect x="210" y="740" width="40" height="170" rx="18" fill="#0f172a"/>
-    <rect x="250" y="740" width="40" height="170" rx="18" fill="#020617"/>
-    <!-- shoes -->
-    <rect x="200" y="900" width="70" height="26" rx="12" fill="#020617"/>
-    <rect x="250" y="900" width="80" height="26" rx="12" fill="#020617"/>
-    <!-- torso -->
-    <rect x="210" y="610" width="120" height="140" rx="40" fill="#1f2937"/>
-    <rect x="230" y="620" width="80" height="120" rx="40" fill="#0f172a"/>
-    <!-- arm -->
-    <rect x="280" y="610" width="120" height="34" rx="17" fill="#1f2937"/>
-    <rect x="350" y="585" width="80" height="28" rx="14" fill="#fbbf24"/>
-    <!-- hand -->
-    <circle cx="430" cy="599" r="16" fill="#fed7aa"/>
-    <!-- head -->
-    <circle cx="250" cy="575" r="40" fill="#fed7aa"/>
-    <path d="M220 565 C 225 540 245 530 270 535" stroke="#7c2d12" stroke-width="22" stroke-linecap="round"/>
-    <!-- glass -->
-    <rect x="330" y="500" width="14" height="70" rx="6" fill="#e5e7eb"/>
-    <path d="M337 495 C 350 495 360 505 360 518 C 360 530 350 540 337 540 C 324 540 314 530 314 518 C 314 505 324 495 337 495Z" fill="#fef9c3"/>
+    <rect x="505" y="644" width="76" height="186" rx="34" fill="#61203a"/>
+    <rect x="565" y="644" width="70" height="186" rx="34" fill="#4b1b35"/>
+    <rect x="504" y="814" width="98" height="28" rx="12" fill="#4b1b35"/>
+    <rect x="566" y="814" width="84" height="28" rx="12" fill="#101423"/>
+    <rect x="518" y="628" width="138" height="154" rx="58" fill="url(#dress)"/>
+    <circle cx="570" cy="579" r="40" fill="#ffd2c1"/>
+    <path d="M538 572 C 540 532 565 512 595 517 C 620 521 638 543 638 570 C 638 594 624 613 603 622" stroke="#ea580c" stroke-width="34" stroke-linecap="round"/>
+    <path d="M510 635 C 528 624 546 618 568 614" stroke="#ffd2c1" stroke-width="28" stroke-linecap="round"/>
+    <circle cx="471" cy="649" r="16" fill="#ffd2c1"/>
+    <rect x="456" y="646" width="18" height="70" rx="9" fill="#ffd2c1"/>
+    <circle cx="569" cy="605" r="6" fill="#facc15"/>
+    <path d="M560 613 C 565 625 575 629 584 626" stroke="#facc15" stroke-width="3" stroke-linecap="round"/>
   </g>
 
-  <!-- woman on right -->
-  <g>
-    <!-- legs -->
-    <rect x="520" y="740" width="40" height="170" rx="18" fill="#4b1d35"/>
-    <rect x="560" y="740" width="40" height="170" rx="18" fill="#451a2d"/>
-    <!-- shoes -->
-    <rect x="510" y="900" width="80" height="26" rx="12" fill="#1f2937"/>
-    <rect x="565" y="900" width="80" height="26" rx="12" fill="#1f2937"/>
-    <!-- dress -->
-    <rect x="510" y="600" width="130" height="150" rx="60" fill="url(#primaryDress)"/>
-    <!-- arm reaching out -->
-    <rect x="470" y="605" width="140" height="26" rx="13" fill="#fecaca"/>
-    <circle cx="470" cy="618" r="16" fill="#fecaca"/>
-    <!-- head -->
-    <circle cx="570" cy="560" r="38" fill="#fecaca"/>
-    <!-- hair -->
-    <path d="M540 555 C 540 525 565 510 595 515 C 615 520 630 540 630 565 C 630 590 615 610 595 615" stroke="#b91c1c" stroke-width="32" stroke-linecap="round"/>
-    <!-- necklace -->
-    <circle cx="570" cy="590" r="6" fill="#facc15"/>
+  <!-- glasses and reflections -->
+  <g filter="url(#softGlow)">
+    <rect x="253" y="586" width="14" height="70" rx="6" fill="#ecfeff"/>
+    <path d="M260 580 C 272 580 282 590 282 603 C 282 615 272 625 260 625 C 248 625 238 615 238 603 C 238 590 248 580 260 580Z" fill="#f9fbff" opacity="0.8"/>
+    <rect x="540" y="610" width="14" height="60" rx="6" fill="#ecfeff"/>
+    <path d="M547 604 C 559 604 569 614 569 626 C 569 638 559 648 547 648 C 535 648 525 638 525 626 C 525 614 535 604 547 604Z" fill="#f9fbff" opacity="0.8"/>
   </g>
+
+  <!-- floor -->
+  <rect y="808" width="800" height="392" fill="url(#floor)"/>
+  <ellipse cx="400" cy="1038" rx="330" ry="120" fill="#d946ef" opacity="0.08"/>
+  <ellipse cx="400" cy="1122" rx="300" ry="58" fill="#ff7ab8" opacity="0.07"/>
 
   <!-- floor candles -->
-  <g>
-    <rect x="200" y="920" width="10" height="40" rx="4" fill="#fde68a"/>
-    <circle cx="205" cy="914" r="8" fill="#fef3c7"/>
-    <rect x="590" y="920" width="10" height="40" rx="4" fill="#fde68a"/>
-    <circle cx="595" cy="914" r="8" fill="#fef3c7"/>
+  <g filter="url(#softGlow)">
+    <rect x="430" y="930" width="10" height="42" rx="4" fill="#fde68a"/>
+    <circle cx="435" cy="922" r="8" fill="#fff7cc"/>
+    <rect x="620" y="1015" width="10" height="38" rx="4" fill="#fde68a"/>
+    <circle cx="625" cy="1008" r="8" fill="#fff7cc"/>
   </g>
 </svg>

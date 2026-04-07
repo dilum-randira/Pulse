@@ -1,28 +1,18 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import ProtectedRoute from './components/routing/ProtectedRoute';
-import { useAuth } from './context/AuthContext';
 import MainLayout from './layouts/MainLayout';
 import Chat from './pages/Chat';
 import Feed from './pages/Feed';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import Matches from './pages/Matches';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 
-function HomeRedirect() {
-  const { token, isLoading } = useAuth();
-
-  if (isLoading) {
-    return <div className="min-h-screen bg-rose-50" />;
-  }
-
-  return <Navigate to={token ? '/dashboard' : '/login'} replace />;
-}
-
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<HomeRedirect />} />
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
 
